@@ -3,20 +3,18 @@ const saltRounds = 10;
 
 function hashPassword(plainPassword){
     console.log("password before hash: ", plainPassword);
-    return new Promise((resolve, reject) => {
-        bcrypt.genSalt(saltRounds, (err, salt)=>{
-            bcrypt.hash(plainPassword, salt, (err, hash)=>{
+    bcrypt.genSalt(saltRounds, (err, salt)=>{
+        bcrypt.hash(plainPassword, salt, (err, hash)=>{
 
-                if(err){
-                    console.log("Error hashing password");
-                    reject(500);
-                };
+            if(err){
+                console.log("Error hashing password");
+            };
+            console.log(`hash / salt = ${hash} / ${salt}`);
+            return [hash, salt];
 
-                resolve(hash);
-
-            })
-        })
-    })
+        });
+    });
+ 
 }
 
 function comparePasswords(attempt, actual){
@@ -44,3 +42,6 @@ module.exports = {
     hashPassword: hashPassword,
     comparePasswords: comparePasswords
 };
+
+
+hashPassword("userpassword4");

@@ -2,6 +2,7 @@ const { reject } = require('bcrypt/promises');
 const mysql = require('mysql2');
 const {hashPassword, comparePasswords} = require("./hide");
 const dotenv = require('dotenv').config();
+const bcrypt = require('bcrypt');
 
 
 const db = mysql.createConnection({
@@ -34,37 +35,78 @@ function initConnection(){
 }
 
 function createUser(props){
-    return new Promise((res, rej) => {
+    console.log(props);
+
+    return new Promise((resolve, reject) => {
 
         // establish database connection
         db.connect((err) => {
             if(err){
                 console.log("Error trying to connect");
-                reject("bad connection attempt");
+                reject(500);
 
             }
 
             // check if user exists
-            db.query(`SELECT ${props.useremail} FROM Users`, (error, result, fields) => {
+            db.query(`SELECT username FROM Users WHERE username='${props.username}';`, (err, result, fields)=>{
+                if(result.length > 0){
+                    console.log("user already exists, ", result);
+                    reject(500);
+                }
+            });
+
+            // hash password and retrieve salt
+            try{
+                const saltRounds = 10;
+                const salt = bcrypt.genSaltSync(saltRounds);
+                const hash = bcrypt.hashSync(props.password, salt);
+                 
+                // insert user into db
+                const values = `('${props.username}', '${props.email}', '${hash}', '${salt}')`;
+                const q = `INSERT INTO Users (username, email, password, salt) VALUES ${values};`;
+                db.query(q, (err, result, fields) => {
+                    if(err){
+                        console.log("err creating new user: ", err);
+                        reject(500);
+                    }
+
+                    if(result){
+                        console.log("success creating new user!!!", result);
+                        resolve(200);
+                    }
+                });
+
+                console.log(`password / salt = ${hash} / ${salt}`);
+
+                resolve(200);
+
+            }catch(err){
+                console.log(err);
+
+                reject(500);
+            }
+
+            /* 
+
+            // insert user into db
+            const values = `('${props.username}', '${props.email}', '${props.password}')`;
+            // const q = `INSERT INTO Users (username, email, password) VALUES ${values};`;
+            db.query(q, (err, result, fields) => {
+                if(err){
+                    console.log("err creating new user: ", err);
+                    reject(500);
+                }
+
                 if(result){
-                    reject(-1);
+                    console.log("success creating new user!!!", result);
+                    resolve(200);
                 }
-            })
-            // if user dne, then create user
+            });
 
+            */
 
-            db.query(`INSERT INTO Users VALUES (${props.useremail}, ${hashPassword(props.userpassword)})`, (error, result, fields) => {
-                if(error){
-                    console.log("Error creating user");
-                    reject("Failed to create new user");
-                }
-            })
-
-
-            resolve("Created new user");
-
-        })
-    })
+        });
+    });
 }
 
 function loginUser(props){

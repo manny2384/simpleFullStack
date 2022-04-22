@@ -3,7 +3,9 @@ const app = express();
 const port = 4000;
 
 const login = require("./login");
+const signup = require("./signup");
 
+app.use("/signup", signup);
 app.use("/login", login);
 
 
