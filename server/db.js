@@ -47,14 +47,6 @@ function createUser(props){
 
             }
 
-            // check if user exists
-            db.query(`SELECT username FROM Users WHERE username='${props.username}';`, (err, result, fields)=>{
-                if(result.length > 0){
-                    console.log("user already exists, ", result);
-                    reject(500);
-                }
-            });
-
             // hash password and retrieve salt
             try{
                 const saltRounds = 10;
@@ -78,7 +70,7 @@ function createUser(props){
 
                 console.log(`password / salt = ${hash} / ${salt}`);
 
-                resolve(200);
+
 
             }catch(err){
                 console.log(err);
