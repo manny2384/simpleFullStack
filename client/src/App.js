@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <section className='navBar' >
+      <section className='app-child' >
       
 
         <div className="navBarContent">

@@ -7,12 +7,19 @@
 html, body, #root, .App{
     height: 100%;
     width: 100vw;
-    background-color: rgb(24, 6, 6);
+    background-color: #2F4454;
     color: white;
 }
 button{
     outline: none;
     cursor: pointer;
+    
+    background-image: linear-gradient(to right, #1C3334 ,#376E6F);
+    background-color: #376E6F;
+
+    color: white;
+    border: none;
+    border-radius: 10px;
 }
 button:hover{
 
@@ -22,7 +29,7 @@ button:hover{
 navigation bar styling
 
 ***************************************************************************************/
-.navBar{
+.app-child{
     width: 100%;
     height: 100%;
     display: flex;
@@ -33,12 +40,12 @@ navigation bar styling
 
 .navBarContent{
     width: 100%;
-    
+    display: flex;
 }
 .navBarContent button{
     width: 200px;
     height: 50px;
-    margin-right: 5px;
+    margin: 0 0 0 10px;
 }
 
 @media only screen and (max-width: 500px){
@@ -47,7 +54,12 @@ navigation bar styling
 
     }
 }
-
+@media only screen and (min-width: 1200px){
+    .navBarContent {
+    
+        justify-content: center;
+    }
+}
 /***************************************************************************************
 
 content styling
@@ -57,7 +69,7 @@ content styling
     display: grid;
     align-items: center;
     width: calc(100% - 2px);
-    border: white 1px solid;
+
 }
 
 /***************************************************************************************
