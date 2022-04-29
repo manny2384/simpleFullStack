@@ -16,6 +16,7 @@ function Login(){
         }
 
         axios.post("http://localhost:4000/login?", {
+            
             username: username,
             password: password
         
@@ -30,10 +31,12 @@ function Login(){
     return(<div className="login">
         
         <div className="login-form">
-            
-                <label>username: <input type="text" onChange={e => setUsername(e.target.value)} /> </label>
-                <label>password: <input type="password" onChange={e => setPassword(e.target.value)} /> </label>
-                <button onClick={handleClick}> Submit </button>
+            <div className="input-values login-values">
+                <input type="text" placeholder="username" onChange={e => setUsername(e.target.value)} />
+                <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
+            </div>
+
+            <button onClick={handleClick}> Log In </button>
            
         </div>
 

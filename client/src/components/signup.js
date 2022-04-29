@@ -37,7 +37,8 @@ function Signup(){
             return;
         }
 
-
+        // check if email is appropriate
+        
 
         axios.post("http://localhost:4000/signup?", {
             username: username,
@@ -51,14 +52,17 @@ function Signup(){
         })
     }
 
-    return(<div>
+    return(<div className="signup">
 
         <div className="signup-form">
-   
-            <label>username: <input id="signup-form-username" type="text" onChange={e=>setUsername(e.target.value)} /> </label>
-            <label>email: <input id="signup-form-email" type="email" onChange={e=>setEmail(e.target.value)} /></label>
-            <label>password: <input id="signup-form-password" type="password" onChange={e=>setPassword(e.target.value)} /> </label>
-            <button value="Submit" onClick={handleClick} > Submit </button>
+
+            <div className="input-values">
+                <input id="signup-form-username" type="text" placeholder="username" onChange={e=>setUsername(e.target.value)} />
+                <input id="signup-form-email" type="email" placeholder="email" onChange={e=>setEmail(e.target.value)} />
+                <input id="signup-form-password" type="password" placeholder="password" onChange={e=>setPassword(e.target.value)} />
+            </div>
+            
+            <button value="Submit" onClick={handleClick} > Sign Up </button>
           
         </div>
 
