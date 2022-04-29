@@ -1,28 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
-
-function handleSubmit(props){
-    console.log("Attempting user signup following : ", props);
-
-    axios.post("http://localhost:4000/signup?", {
-        username: props.username,
-        email: props.email,
-        password: props.password
-    
-    }).then((response) => {
-        console.log(response);
-    }).catch((error) => {
-        console.log(error);
-    })
-
-
-
-
-}
 
 function Signup(){
 
-    const [user, setUser] = useState({});
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

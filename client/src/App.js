@@ -8,7 +8,6 @@ import Signup from "./components/signup";
 function App() {
 
   const [state, setState] = useState("login");
-  const [nav, setNav] = useState(true);
   
 
   return (
