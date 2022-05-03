@@ -8,7 +8,7 @@ function Login(){
 
     const checkUsername = () => {
         if(username.trim().length === 0){
-            document.getElementById("login-form-user").style.animation = "bad_input 5s";
+            document.getElementById("login-form-user").style.animation = "bad_input 7s";
             console.log("prompt username");
             return true;
         }
@@ -17,7 +17,7 @@ function Login(){
     }
     const checkPassword = () => {
         if(password.trim().length === 0){
-            document.getElementById("login-form-pass").style.animation = "bad_input 5s";
+            document.getElementById("login-form-pass").style.animation = "bad_input 7s";
             console.log("prompt password");
             return true;
         }
@@ -28,8 +28,8 @@ function Login(){
     const handleClick = () => (e) => {
         e.preventDefault();
         console.log(`username / password = ${username} / ${password}`)
-        if(checkPassword() && checkUsername() || checkPassword() || checkUsername()){
-            console.log("username or password emtpy");
+        if((checkPassword() && checkUsername()) || checkPassword() || checkUsername()){
+            alert("Fill appropriate fields");
             return;
         }
 

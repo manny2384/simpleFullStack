@@ -1,21 +1,45 @@
 import React, { useState } from "react";
 import axios from 'axios';
 
-const email = document.querySelector("#signup-form-email");
-const password = document.querySelector("#signup-form-password");
-const username = document.querySelector("#signup-form-username");
 
 function Signup(){
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const checkUsername = () => {
+        if(username.trim().length === 0){
+            document.getElementById("signup-form-username").style.animation = "bad_input 7s";
+            console.log("prompt username");
+            return true;
+        }
+
+        return false;
+    }
+    const checkPassword = () => {
+        if(password.trim().length === 0){
+            document.getElementById("signup-form-password").style.animation = "bad_input 7s";
+            console.log("prompt password");
+            return true;
+        }
+
+        return false;
+    }
+    const checkEmail = () => {
+        if(email.trim().length === 0){
+            document.getElementById("signup-form-email").style.animation = "bad_input 7s";
+            console.log("prompt password");
+            return true;
+        }
+
+        return false;
+    }
 
     const handleClick = () =>{
         console.log("making api call...");
         
         // check if strings are only spaces
-        if(username.trim().length === 0 || email.trim().length === 0 || password.trim().length === 0){
+        if((checkEmail() && checkPassword() && checkUsername()) || checkEmail() || checkPassword() || checkUsername()){
             console.log("Some fields are empty, please try again");
             alert("Fill appropriate fields");
             return;
