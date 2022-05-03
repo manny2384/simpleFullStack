@@ -7,8 +7,9 @@
 html, body, #root, .App{
     height: 100%;
     width: 100vw;
-    background-color: #2F4454;
+    background-color: #eaebee;
     color: white;
+    display: grid;
 }
 button{
     outline: none;
@@ -17,36 +18,54 @@ button{
     background-image: linear-gradient(to right, #1C3334 ,#376E6F);
     background-color: #376E6F;
 
-    color: white;
+    color: black;
     border: none;
     border-radius: 10px;
 }
 button:hover{
+    color: white;
+}
+.app-child{
+    width: 650px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 10px solid #1C3334;
+    margin: auto;
+}
 
+@media only screen and (max-width: 500px){
+    .app-child{
+        width: auto;
+        height: auto;
+        border: 0;
+    }
 }
 /***************************************************************************************
 
 navigation bar styling
 
 ***************************************************************************************/
-.app-child{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .navBarContent{
     width: 100%;
     display: flex;
     justify-content: center;
+    background-color: #1C3334;
 }
 .navBarContent button{
     width: 200px;
     height: 50px;
-    margin: 0 0 0 10px;
+    border-radius: 0px;
+}
+#log-btn-nav{
+    background-image: linear-gradient(to right, #1C3334, #376E6F);
+    border-right: 1px solid black;
+}
+#sign-btn-nav{
+    background-image: linear-gradient(to right, #376E6F, #1C3334); 
+    border-left: 1px solid black;
 }
 
 @media only screen and (max-width: 500px){
@@ -104,8 +123,20 @@ signup and login styling
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 16px;
+    border: 3px solid black;
+    animation: none 10s;
 }
-
+@keyframes bad_input {
+    0%{
+        border-color: darkred;
+    }
+    90%{
+        border-color: darkred;
+    }
+    100%{
+        border-color: black;
+    }
+}
 .signup-form button, .login-form button{
     height: 40px;
     width: 100px;
@@ -133,5 +164,6 @@ orientation of device is in landscape mode
     }
     .app-child{
         margin-top: 50px;
+        margin-bottom: 50px;
     }
 }

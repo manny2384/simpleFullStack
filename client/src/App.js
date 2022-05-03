@@ -19,8 +19,8 @@ function App() {
       
 
         <div className="navBarContent">
-          <button onClick={()=> setState("login")}> Login </button>
-          <button onClick={()=> setState("signup")}> Signup </button>
+          <button id="log-btn-nav" onClick={()=> setState("login")}> Login </button>
+          <button id="sign-btn-nav" onClick={()=> setState("signup")}> Signup </button>
         </div>
         
         <section className="content">

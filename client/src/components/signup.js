@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import axios from 'axios';
 
+const email = document.querySelector("#signup-form-email");
+const password = document.querySelector("#signup-form-password");
+const username = document.querySelector("#signup-form-username");
+
 function Signup(){
 
     const [username, setUsername] = useState("");
@@ -29,6 +33,10 @@ function Signup(){
             console.log(response);
         }).catch((error) => {
             console.log(error);
+            username.style.border = "1px solid";
+            username.style.borderColor = "red";
+            email.style.border = "1px solid red";
+            password.style.border = "1px solid red";
         })
     }
 

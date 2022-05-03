@@ -1,19 +1,35 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import Amplify from "aws-amplify";
-import awsExports from "./aws-exports";
 
 function Login(){
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleClick = () => {
+    const checkUsername = () => {
+        if(username.trim().length === 0){
+            document.getElementById("login-form-user").style.animation = "bad_input 5s";
+            console.log("prompt username");
+            return true;
+        }
 
+        return false;
+    }
+    const checkPassword = () => {
+        if(password.trim().length === 0){
+            document.getElementById("login-form-pass").style.animation = "bad_input 5s";
+            console.log("prompt password");
+            return true;
+        }
+
+        return false;
+    }
+
+    const handleClick = () => (e) => {
+        e.preventDefault();
         console.log(`username / password = ${username} / ${password}`)
-        if(username.trim().length === 0 || password.trim().length === 0){
+        if(checkPassword() && checkUsername() || checkPassword() || checkUsername()){
             console.log("username or password emtpy");
-            alert("username or password empty, please fill");
             return;
         }
 
@@ -34,11 +50,11 @@ function Login(){
         
         <div className="login-form">
             <div className="input-values login-values">
-                <input type="text" placeholder="username" onChange={e => setUsername(e.target.value)} />
-                <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
+                <input id="login-form-user" type="text" placeholder="username" onChange={e => setUsername(e.target.value)} />
+                <input id="login-form-pass" type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
             </div>
 
-            <button onClick={handleClick}> Log In </button>
+            <button onClick={handleClick()}> Log In </button>
            
         </div>
 
