@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import Amplify from "aws-amplify";
+import awsExports from "./aws-exports";
 
 function Login(){
 

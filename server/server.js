@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const port = 4000;
 
-const login = require("./login");
-const signup = require("./signup");
+const login = require("./server-helpers/login");
+const signup = require("./server-helpers/signup");
 
 app.use("/signup", signup);
 app.use("/login", login);
