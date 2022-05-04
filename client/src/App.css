@@ -167,3 +167,15 @@ orientation of device is in landscape mode
         margin-bottom: 50px;
     }
 }
+
+/***************************************************************************************
+
+users.js component styling
+
+***************************************************************************************/
+.allUsers{
+    background-color: grey;
+    position: absolute;
+    height: 100%; 
+    width: 100%;
+}
