@@ -26,7 +26,7 @@ function App() {
           {state==="signup" && <Signup />}
           
         </section>      
-        <button onClick={(e)=>setUsers(true)}> See All Users </button>
+        <button id="allusers-btn" onClick={(e)=>setUsers(true)}> See All Users </button>
       </section>
 
       {users && <Users setUsers={setUsers} />}

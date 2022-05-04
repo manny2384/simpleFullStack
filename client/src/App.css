@@ -26,6 +26,7 @@ button:hover{
     color: white;
 }
 .app-child{
+    z-index: 1;
     width: 650px;
     height: 550px;
     display: flex;
@@ -92,6 +93,11 @@ content styling
 
 }
 
+#allusers-btn{
+    width: 100px;
+    height: 30px;
+    margin: 10px 0;
+}
 /***************************************************************************************
 
 signup and login styling
@@ -103,7 +109,7 @@ signup and login styling
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    height: 500px;
+    height: 450px;
     width: 500px;
 
     
@@ -174,8 +180,46 @@ users.js component styling
 
 ***************************************************************************************/
 .allUsers{
-    background-color: grey;
+    background-color: white;
     position: absolute;
+    z-index: 1;
     height: 100%; 
     width: 100%;
+    color: black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+.users{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.users ul{
+    overflow: scroll;
+    background-image: linear-gradient(#1C3334, #376E6F, white);
+}
+.users ul li{
+    width: calc(100% - 2px);
+    height: 50px;
+    border: 1px solid black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.users ul li:hover{
+    color: white;
+    background-color: #3c4747;
+    cursor: pointer;
+}
+.users button{
+    width: 100px;
+    height: 25px;
+    color: black;
+}
+.users button:hover{
+    color: white;
+   
 }

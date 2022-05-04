@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
 function Users(props){
-    const [list, setList] = useState([{'username':'1'},{'username':'2'},{'username':'3'}]);
-
+    const [list, setList] = useState([{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}]);
+    const [users, setUsers] = useState();
+/*
     useEffect(() => {
         axios.get("http://localhost:4000/users", {})
         .then((response) => {
@@ -14,19 +15,25 @@ function Users(props){
         })
 
     }, []);
-
-    const Users = list.forEach((x)=>{
-        console.log(x);
-        return(<li> {x['username']} </li>)
-    });
+*/
+    var Users;
+    useEffect(()=>{
+        Users = list.map((x)=>{
+            console.log(x.username);
+            return(<li> {x.username} </li>)
+        });
+        
+        setUsers(Users);
+        console.log(Users);
+    }, [list]);
+   
 
     return(<div className="allUsers">
 
-        <button onClick={(e)=>props.setUsers(false)}> Exit </button>
-
         <section className="users">
-            <ul style={{"height":"300px", "width":"300px"}}> {Users} </ul>
-            <button> Refresh </button>
+            <button onClick={(e)=>props.setUsers(false)}> Exit </button>
+            <ul style={{"height":"300px", "width":"300px"}}> {users} </ul>
+            <button> <span> </span> Refresh </button>
         </section>
         
     </div>)
