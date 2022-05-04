@@ -19,9 +19,9 @@ function Users(props){
 
     }, []);
 */
-    var Users;
+    
     useEffect(()=>{
-        Users = tempList.map((x)=>{
+        const Users = tempList.map((x)=>{
             console.log(x.username);
             return(<li> {x.username} </li>)
         });
