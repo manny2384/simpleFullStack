@@ -28,7 +28,7 @@ function Users(props){
         
         setUsers(Users);
         console.log(Users);
-    }, []);
+    }, [tempList]);
    
 
     return(<div className="allUsers">
