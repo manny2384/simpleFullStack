@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 // import axios from 'axios';
 
 function Users(props){
-    const [list, setList] = useState([{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}]);
+    // const [list, setList] = useState([{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}]);
     const [users, setUsers] = useState();
-/*
+    const tempList = [{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}];
+
+    /*  
+
     useEffect(() => {
         axios.get("http://localhost:4000/users", {})
         .then((response) => {
@@ -18,14 +21,14 @@ function Users(props){
 */
     var Users;
     useEffect(()=>{
-        Users = list.map((x)=>{
+        Users = tempList.map((x)=>{
             console.log(x.username);
             return(<li> {x.username} </li>)
         });
         
         setUsers(Users);
         console.log(Users);
-    }, [list]);
+    }, []);
    
 
     return(<div className="allUsers">
