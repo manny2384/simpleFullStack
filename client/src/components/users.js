@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+// import axios from 'axios';
 
 function Users(props){
     const [list, setList] = useState([{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}]);
     const [users, setUsers] = useState();
-
+/*
     useEffect(() => {
         axios.get("http://localhost:4000/users", {})
         .then((response) => {
@@ -15,7 +15,7 @@ function Users(props){
         })
 
     }, []);
-
+*/
     var Users;
     useEffect(()=>{
         Users = list.map((x)=>{
