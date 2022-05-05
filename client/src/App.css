@@ -214,7 +214,7 @@ users.js component styling
         height: 300px;
     }
 }
-@media only screen and (orientation: landscape){
+@media only screen and (orientation: landscape) and (max-width: 800px){
     .allUsers{
         height: auto;
     }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import axios from 'axios';
+import axios from 'axios';
 
 function Users(props){
     const [list, setList] = useState([]);
@@ -8,8 +8,8 @@ function Users(props){
 
     useEffect(() => {
         
+        console.log("calling initial api for all users");
         
-        /*
         axios.get("http://localhost:4000/users", {})
         .then((response) => {
             console.log(response.data);
@@ -18,12 +18,15 @@ function Users(props){
             console.log(error);
         })
 
-        */
-
+        
+        /*
 
        setList([{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'},
        {'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}]);
-        console.log("rendering")
+        
+       */
+
+  
     }, []);
 
 
