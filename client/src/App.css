@@ -192,7 +192,8 @@ users.js component styling
 
 }
 .users{
-    height: 400px;
+    height: 500px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -200,6 +201,26 @@ users.js component styling
 .users ul{
     overflow: scroll;
     background-image: linear-gradient(#1C3334, #376E6F, white);
+    width: 100%;
+    margin: auto;
+    height: 400px;
+}
+@media only screen and (max-width: 500px){
+    .users{
+        width: 100%;
+    }
+    .users ul{
+        width: 300px;
+        height: 300px;
+    }
+}
+@media only screen and (orientation: landscape){
+    .allUsers{
+        height: auto;
+    }
+    .users{
+        margin: 50px 0;
+    }
 }
 .users ul li{
     width: calc(100% - 2px);

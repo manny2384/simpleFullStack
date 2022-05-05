@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import './App.css';
 import Login from "./components/login";
@@ -10,6 +10,12 @@ function App() {
 
   const [state, setState] = useState("login");
   const [users, setUsers] = useState(false);
+
+  useEffect(()=>{
+    var hide_or_show_app_child = users ? "none" : "flex";
+
+      document.getElementsByClassName('app-child')[0].style.display = hide_or_show_app_child;
+  }, [users]);
 
   return (
     <div className="App">
