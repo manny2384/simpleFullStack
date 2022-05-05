@@ -4,9 +4,6 @@ import React, { useState, useEffect } from "react";
 function Users(props){
     const [list, setList] = useState([]);
     const [users, setUsers] = useState();
-    const tempList = [{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'},
-    {'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}];
-
 
 
     useEffect(() => {
@@ -24,7 +21,8 @@ function Users(props){
         */
 
 
-       setList(tempList);
+       setList([{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'},
+       {'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}]);
         console.log("rendering")
     }, []);
 
