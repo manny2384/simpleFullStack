@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 // import axios from 'axios';
 
 function Users(props){
-    // const [list, setList] = useState([{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}]);
+    const [list, setList] = useState([]);
     const [users, setUsers] = useState();
-    const [list] = useState([{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'},
-    {'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}]);
+    const tempList = [{'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'},
+    {'username':'1'},{'username':'2'},{'username':'3'},{'username':'1'},{'username':'2'},{'username':'3'}];
 
-    /*  
+
 
     useEffect(() => {
+        
+        
+        /*
         axios.get("http://localhost:4000/users", {})
         .then((response) => {
             console.log(response.data);
@@ -18,13 +21,20 @@ function Users(props){
             console.log(error);
         })
 
+        */
+
+
+       setList(tempList);
+        console.log("rendering")
     }, []);
-*/
-    
+
+
+
+
     useEffect(()=>{
-        const Users = list.map((x)=>{
-            console.log(x.username);
-            return(<li> {x.username} </li>)
+        const Users = list.map((x, idx)=>{
+            console.log(x.username, idx);
+            return(<li key={idx}> {x.username}, ID: {idx} </li>)
         });
         
         setUsers(Users);
