@@ -55,12 +55,12 @@ function Signup(){
         
         }).then((response) => {
             console.log(response);
+            alert(`Successfully created new user: ${username}`);
         }).catch((error) => {
-            console.log(error);
-            username.style.border = "1px solid";
-            username.style.borderColor = "red";
-            email.style.border = "1px solid red";
-            password.style.border = "1px solid red";
+            alert(`The username/ email is already in use`);
+            setEmail("");
+            setPassword("");
+            setUsername("");
         })
     }
 
