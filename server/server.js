@@ -6,6 +6,13 @@ const login = require("./server-helpers/login");
 const signup = require("./server-helpers/signup");
 const db = require("./server-helpers/db");
 
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://frabjous-gumption-22b130.netlify.app");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    next();
+});
+
 app.use("/signup", signup);
 app.use("/login", login);
 
