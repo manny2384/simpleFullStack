@@ -12,6 +12,8 @@
 
 The sign up form is pretty straight forward. It consists of 3 inputs(username, email, password). When creating a new user, it makes an api call via axios to create a new user on the database. Once created you can look for it in the list of users by clicking the "see all users" button
 
+![Sign in UI](./picture.png)
+
 ### Login Form
 
 The login form currently does nothing
