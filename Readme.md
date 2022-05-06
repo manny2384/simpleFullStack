@@ -12,8 +12,25 @@
 
 The sign up form is pretty straight forward. It consists of 3 inputs(username, email, password). When creating a new user, it makes an api call via axios to create a new user on the database. Once created you can look for it in the list of users by clicking the "see all users" button
 
-![Sign in UI](./picture.png)
+![Sign in UI](./demonstration.gif)
 
 ### Login Form
 
 The login form currently does nothing
+
+### Database Schema
+
+```
+CREATE TABLE IF NOT EXISTS Users(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(40) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(400) NOT NULL,
+    salt VARCHAR(400) NOT NULL,
+    UNIQUE KEY unique_username (username),
+    UNIQUE KEY unique_email (email)
+);
+
+ALTER TABLE Users AUTO_INCREMENT = 0;
+
+```
