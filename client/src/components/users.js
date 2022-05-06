@@ -10,7 +10,7 @@ function Users(props){
         
         console.log("calling initial api for all users");
         
-        axios.get("http://localhost:4000/users", {})
+        axios.get("https://us-central1-simplefullstackapi.cloudfunctions.net/app/users", {})
         .then((response) => {
             console.log(response.data);
             setList(response.data);
