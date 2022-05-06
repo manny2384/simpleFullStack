@@ -7,7 +7,7 @@ login.use(express.json());
 login.use(express.urlencoded({extended:true}));
 
 login.post("/", async(req, res)=>{
-
+    
     try{
         const result = await utils.loginUser(req.body);
         if(result == 200){

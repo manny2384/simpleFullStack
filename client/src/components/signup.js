@@ -48,7 +48,7 @@ function Signup(){
         // check if email is appropriate
         
 
-        axios.post("http://localhost:4000/signup?", {
+        axios.post("https://us-central1-simplefullstackapi.cloudfunctions.net/app/signup", {
             username: username,
             email: email,
             password: password

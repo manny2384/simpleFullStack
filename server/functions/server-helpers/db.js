@@ -13,24 +13,38 @@ const db = mysql.createConnection({
 });
 
 
-function initConnection(){
+function getUsers(){
     
-    return new Promise((resolve, reject) => {
-        db.connect((err)=>{
-            if(err){
-                console.log("ERROR ATTEMPT: ", err);
-                reject("bad connection");
+    return new Promise((resolve, reject)=>{
+        console.log("fetching users from db...")
+        db.connect((err) => {
+
+            if(err) {
+                console.log("err trying to connect to db when fetching users");
             }
-        
-            db.query(`SELECT * FROM Users`, (err, res, fields)=>{
-                if(err) throw err;
-                console.log(res);
-            });
-
-            resolve("finished");
-        });
-    })
-
+    
+            try{
+                const q = `SELECT username FROM Users;`;
+                db.query(q, (err, result, fields)=>{
+                    
+                    if(err){
+                        console.log(`error making query: ${q} to db`);
+                        reject(500);
+                    }
+    
+                    else{
+                        console.log(result);
+                        resolve(result);
+                    }
+                }); // end of db.query
+    
+            }catch(err){
+                console.log("error occured trying to make users query");
+                reject(500);
+            }
+    
+        }); // end of db.connect
+    }); // end of promise
 }
 
 function createUser(props){
@@ -76,25 +90,6 @@ function createUser(props){
 
                 reject(500);
             }
-
-            /* 
-
-            // insert user into db
-            const values = `('${props.username}', '${props.email}', '${props.password}')`;
-            // const q = `INSERT INTO Users (username, email, password) VALUES ${values};`;
-            db.query(q, (err, result, fields) => {
-                if(err){
-                    console.log("err creating new user: ", err);
-                    reject(500);
-                }
-
-                if(result){
-                    console.log("success creating new user!!!", result);
-                    resolve(200);
-                }
-            });
-
-            */
 
         });
     });
@@ -158,8 +153,8 @@ function findUser(){
 
 
 module.exports = {
-    initConnection: initConnection,
     createUser: createUser,
     loginUser: loginUser,
-    findUser: findUser
+    findUser: findUser,
+    getUsers: getUsers
 }

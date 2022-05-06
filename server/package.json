@@ -10,8 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-amplify/cli": "^8.1.0",
     "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
     "dotenv": "^16.0.0",
+    "firebase-admin": "^10.1.0",
+    "firebase-functions": "^3.20.1",
+    "firebase-tools": "^10.7.2",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {

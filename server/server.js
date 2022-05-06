@@ -4,6 +4,7 @@ const port = 4000;
 
 const login = require("./server-helpers/login");
 const signup = require("./server-helpers/signup");
+const db = require("./server-helpers/db");
 
 app.use("/signup", signup);
 app.use("/login", login);
@@ -13,6 +14,15 @@ app.get('/', (req, res)=>{
 
     res.send("Hello from server");
 
+});
+
+app.get('/users', async (req, res)=>{
+    const result = await db.getUsers();
+
+    if(result === 500) 
+        res.status(500).send("getting users list failed");
+
+    res.send(result);
 });
 
 app.listen(port, ()=>{

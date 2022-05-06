@@ -23,6 +23,16 @@ app.get("/", (req, res)=>{
     res.send("Hello from server");
 });
 
+app.get('/users', async (req, res)=>{
+    
+    const result = await db.getUsers();
+
+    if(result === 500) 
+        res.status(500).send("getting users list failed");
+
+    res.send(result);
+});
+
 app.listen(port, ()=>{
     console.log("listening on port ", port, "...");
 });

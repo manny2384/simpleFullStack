@@ -33,14 +33,16 @@ function Login(){
             return;
         }
 
-        axios.post("http://localhost:4000/login?", {
+        axios.post("https://us-central1-simplefullstackapi.cloudfunctions.net/app/login", {
             
             username: username,
             password: password
         
         }).then((response) => {
             console.log(response);
+            
         }).catch((error) => {
+            alert("Invalid username or password");
             console.log(error);
         })
 
